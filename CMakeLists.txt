@@ -5,10 +5,17 @@ set(CXX_STANDARD 17)
 set(CXX_STANDARD_REQUIRED ON)
 set(CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -g)
 
+# For clang-format support
+list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
+include(ClangFormat)
+file(GLOB to_be_formatted "test/*.cpp" "include/*.h" "src/*.cpp")
+clangformat_setup(${to_be_formatted})
+
 add_library(alexandria 
     src/ascii_string.cpp
     src/global_mem.cpp
 )
+
 target_include_directories(alexandria PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(alexandria PRIVATE 
     ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined
