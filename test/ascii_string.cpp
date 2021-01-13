@@ -48,4 +48,9 @@ int main() {
         expect(hello.empty());
         expect(new_hello == "hello");
     };
+
+    "a empty string is equal to the empty char *"_test = []{
+        string str;
+        expect(str == "");
+    };
 }

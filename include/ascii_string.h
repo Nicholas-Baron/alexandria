@@ -35,6 +35,7 @@ namespace alx {
         ~ascii_string() noexcept { delete[] buf; }
 
       private:
+        // Comparisons where both sides are strings
         [[nodiscard]] friend constexpr bool operator==(const ascii_string & lhs,
                                                        const ascii_string & rhs) noexcept {
             if (lhs.buf == nullptr or rhs.buf == nullptr) return lhs.buf == rhs.buf;
@@ -47,6 +48,29 @@ namespace alx {
             return not(lhs == rhs);
         }
 
+        // Comparisons where the right hand side is a char *
+        [[nodiscard]] friend constexpr bool operator==(const ascii_string & lhs,
+                                                       const char * rhs) noexcept {
+            if (lhs.buf == nullptr or rhs == nullptr) {
+                // Here, the lhs or the rhs (possibly both) is null.
+                if (lhs.buf == rhs) return true;
+
+                // Here, the lhs xor the rhs is null.
+
+                if (lhs.buf != nullptr) return strlen(lhs.buf) == 0;
+                else
+                    return strlen(rhs) == 0;
+            }
+
+            return strcmp(lhs.buf, rhs) == 0;
+        }
+
+        [[nodiscard]] friend constexpr bool operator!=(const ascii_string & lhs,
+                                                       const char * rhs) noexcept {
+            return not(lhs == rhs);
+        }
+
+        // Data members
         size_t size_{0};
         char * buf{nullptr};
     };
