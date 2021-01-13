@@ -3,5 +3,6 @@
 int main() {
     assert(2 == 2);
     assert_eq(2, 2);
-    unreachable();
+    assert_ne(3, 2);
+    todo();
 }
