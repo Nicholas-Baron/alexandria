@@ -18,7 +18,7 @@ add_library(alexandria
 
 target_include_directories(alexandria PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
 target_compile_options(alexandria PRIVATE 
-    ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined
+    ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined -Wmissing-declarations
 )
 
 file(GLOB tests "test/*.cpp")
