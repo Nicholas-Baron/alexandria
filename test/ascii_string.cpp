@@ -2,12 +2,9 @@
 
 #include <boost_ut/ut.hpp>
 
-#include <stdio.h>
 #include <string.h>
 
 using alx::string;
-
-static void print(string test) { puts(test.c_str()); }
 
 int main() {
     using namespace boost::ut;
