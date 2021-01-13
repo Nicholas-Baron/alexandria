@@ -72,6 +72,7 @@ namespace alx {
 
         // Data members
         size_t size_{0};
+        size_t capacity_{0};
         char * buf{nullptr};
     };
 
