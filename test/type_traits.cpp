@@ -12,10 +12,10 @@ int main() {
 
     // remove_ref removes lvalue references.
     static_assert(alx::is_same_v<alx::remove_ref_t<int &>, int>);
-    
+
     // remove_ref removes rvalue references.
     static_assert(alx::is_same_v<alx::remove_ref_t<int &&>, int>);
-    
+
     // remove_ref returns the type if there are no references to be removed.
     static_assert(alx::is_same_v<alx::remove_ref_t<int>, int>);
 }

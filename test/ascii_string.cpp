@@ -49,7 +49,7 @@ int main() {
         expect(new_hello == "hello");
     };
 
-    "a empty string is equal to the empty char *"_test = []{
+    "a empty string is equal to the empty char *"_test = [] {
         string str;
         expect(str == "");
     };

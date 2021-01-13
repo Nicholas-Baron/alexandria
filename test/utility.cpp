@@ -27,4 +27,3 @@ int main() {
         expect(eq(dest.x, 1));
     };
 }
-
