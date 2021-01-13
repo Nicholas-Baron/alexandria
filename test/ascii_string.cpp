@@ -3,6 +3,7 @@
 #include <boost_ut/ut.hpp>
 
 #include <string.h>
+#include <utility.h> // alx::move
 
 using alx::string;
 
@@ -39,5 +40,12 @@ int main() {
         const auto old_hello = hello;
         hello += '!';
         expect(old_hello != hello);
+    };
+
+    "a moved-from string is empty"_test = [] {
+        string hello = "hello";
+        string new_hello = alx::move(hello);
+        expect(hello.empty());
+        expect(new_hello == "hello");
     };
 }
