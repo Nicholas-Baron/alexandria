@@ -16,3 +16,7 @@ These are the external dependencies bundled in this repository:
 
 This is a possible future dependency:
  * [fmtlib](https://github.com/fmtlib/fmt) as three header files to handle printing
+
+## Contributing
+This repository uses Test-Driven Development (TDD) with a general rule that each test should do one feature.
+There is a preference for simpler code and APIs. Any complexity in the code must be justified by the tests.
