@@ -20,6 +20,8 @@ namespace alx {
         return old_value;
     }
 
+    template<typename T> constexpr void swap(T & lhs, T & rhs) { lhs = exchange(rhs, move(lhs)); }
+
 } // namespace alx
 
 #endif

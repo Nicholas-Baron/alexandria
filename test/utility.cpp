@@ -26,4 +26,14 @@ int main() {
         expect(eq(src.x, 2));
         expect(eq(dest.x, 1));
     };
+
+    "swap switches which values are in two variables"_test = [] {
+        int x = 5;
+        int y = 10;
+
+        alx::swap(x, y);
+
+        expect(eq(x, 10));
+        expect(eq(y, 5));
+    };
 }
