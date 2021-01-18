@@ -1,7 +1,7 @@
 cmake_minimum_required(VERSION 3.0)
 project(alexandria)
 
-set(CXX_STANDARD 17)
+set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 set(CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -g)
 
