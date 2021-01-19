@@ -20,6 +20,10 @@ target_include_directories(alexandria PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 target_compile_options(alexandria PRIVATE 
     ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined -Wmissing-declarations
 )
+target_compile_features(alexandria 
+    PRIVATE cxx_auto_type 
+    PUBLIC cxx_noexcept cxx_final cxx_attributes cxx_nullptr cxx_defaulted_functions cxx_constexpr
+    )
 
 file(GLOB tests "test/*.cpp")
 foreach(test_src ${tests})
