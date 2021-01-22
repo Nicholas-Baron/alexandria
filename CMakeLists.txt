@@ -25,6 +25,17 @@ target_compile_features(alexandria
     PUBLIC cxx_noexcept cxx_final cxx_attributes cxx_nullptr cxx_defaulted_functions cxx_constexpr
     )
 
+function(add_alexandria_test test_exec test_src)
+    message(STATUS "Test ${test_exec} registered")
+    add_executable(${test_exec} ${test_src})
+    target_link_libraries(${test_exec} PRIVATE ubsan alexandria)
+    target_compile_options(${test_exec} PRIVATE
+        ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined
+        )
+    target_compile_features(${test_exec} PRIVATE cxx_std_20)
+    target_include_directories(${test_exec} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external)
+endfunction()
+
 file(GLOB tests "test/*.cpp")
 foreach(test_src ${tests})
     # find the last space
@@ -36,12 +47,6 @@ foreach(test_src ${tests})
     # remove the ".cpp" and initial "/"
     string(REGEX MATCH "[^./]+" test_exec ${test_exec})
 
-    message(STATUS "Test ${test_exec} registered")
-    add_executable(${test_exec} ${test_src})
-    target_link_libraries(${test_exec} PRIVATE ubsan alexandria)
-    target_compile_options(${test_exec} PRIVATE 
-        ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined
-        )
-    target_compile_features(${test_exec} PRIVATE cxx_std_20)
-    target_include_directories(${test_exec} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external)
+    add_alexandria_test(${test_exec} ${test_src})
+
 endforeach()
