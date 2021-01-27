@@ -27,16 +27,16 @@ namespace alx {
     NUM_LIM_INST(signed char, true, true, true);
     NUM_LIM_INST(unsigned char, false, true, true);
 
-    NUM_LIM_INST(short, false, true, true);
+    NUM_LIM_INST(short, true, true, true);
     NUM_LIM_INST(unsigned short, false, true, true);
 
-    NUM_LIM_INST(int, false, true, true);
+    NUM_LIM_INST(int, true, true, true);
     NUM_LIM_INST(unsigned, false, true, true);
 
-    NUM_LIM_INST(long, false, true, true);
+    NUM_LIM_INST(long, true, true, true);
     NUM_LIM_INST(unsigned long, false, true, true);
 
-    NUM_LIM_INST(long long, false, true, true);
+    NUM_LIM_INST(long long, true, true, true);
     NUM_LIM_INST(unsigned long long, false, true, true);
 
     NUM_LIM_INST(char8_t, false, true, true);
