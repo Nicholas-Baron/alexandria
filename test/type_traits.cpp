@@ -18,4 +18,19 @@ int main() {
 
     // remove_ref returns the type if there are no references to be removed.
     static_assert(alx::is_same_v<alx::remove_ref_t<int>, int>);
+
+    // The normal int type is signed.
+    static_assert(alx::is_signed_v<int>);
+
+    // The normal int type is arithmetic.
+    static_assert(alx::is_arithmetic_v<int>);
+
+    // The normal int type is an integral type.
+    static_assert(alx::is_integral_v<int>);
+
+    // The unsigned type is not signed.
+    static_assert(not alx::is_signed_v<unsigned>);
+
+    // The unsigned type is an integral.
+    static_assert(alx::is_integral_v<unsigned>);
 }
