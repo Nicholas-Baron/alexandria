@@ -11,20 +11,23 @@ MaxEmptyLinesToKeep: 1
 # Alignment checks
 AlignTrailingComments: true
 AlignAfterOpenBracket: Align
+AlignOperands: AlignAfterOperator
 
 # Allowed shortenings
 AllowShortBlocksOnASingleLine: true
 AllowShortFunctionsOnASingleLine: All
 AllowShortIfStatementsOnASingleLine: Always
 AllowShortLoopsOnASingleLine: true
+
+# Line breaks
+AlwaysBreakTemplateDeclarations: Yes
 BreakBeforeBraces: Attach
-
 BreakConstructorInitializers: BeforeComma
-DerivePointerAlignment: false
-PointerAlignment: Middle
-
 BreakBeforeBinaryOperators: All
 BreakBeforeTernaryOperators: true
+
+DerivePointerAlignment: false
+PointerAlignment: Middle
 
 SpaceAfterTemplateKeyword: false
 SpaceBeforeAssignmentOperators: true
