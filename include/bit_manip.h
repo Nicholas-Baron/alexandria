@@ -5,7 +5,7 @@
 
 namespace alx {
 
-    template<typename T>
+    template<unsigned_integral T>
     constexpr int popcount(T x) noexcept {
         int count = 0;
         for (; x != 0; count++) x &= x - 1;

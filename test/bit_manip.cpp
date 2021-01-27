@@ -7,11 +7,11 @@ int main() {
 
     "popcount returns the number of 'on' bits in a number"_test = [] {
         using alx::popcount;
-        expect(popcount(0) == 0_i);
+        expect(popcount(0u) == 0_i);
 
-        for (int i = 0; i < 4; i++) expect(eq(popcount(1 << i), 1));
+        for (int i = 0; i < 4; i++) expect(popcount(1u << i) == 1_i);
 
-        expect(eq(popcount(15), 4));
+        expect(popcount(15u) == 4_i);
     };
 
     "is_power_of_2 return whether a number is a power of 2"_test = [] {
