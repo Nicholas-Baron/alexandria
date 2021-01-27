@@ -3,6 +3,7 @@ project(alexandria)
 
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
+set(CXX_EXTENSIONS OFF)
 set(CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -g)
 
 # For clang-format support
@@ -20,6 +21,10 @@ target_include_directories(alexandria PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include
 target_compile_options(alexandria PRIVATE 
     ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined -Wmissing-declarations
 )
+set_target_properties(alexandria PROPERTIES
+    CXX_STANDARD 20
+    CXX_STANDARD_REQUIRED ON
+    )
 target_compile_features(alexandria 
     PRIVATE cxx_auto_type 
     PUBLIC cxx_noexcept cxx_final cxx_attributes cxx_nullptr cxx_defaulted_functions cxx_constexpr
