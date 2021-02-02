@@ -23,8 +23,8 @@ int main() {
 
         test_t src{1};
         test_t dest = alx::exchange(src, 2);
-        expect(eq(src.x, 2));
-        expect(eq(dest.x, 1));
+        expect(src.x == 2_i);
+        expect(dest.x == 1_i);
     };
 
     "swap switches which values are in two variables"_test = [] {
@@ -33,7 +33,7 @@ int main() {
 
         alx::swap(x, y);
 
-        expect(eq(x, 10));
-        expect(eq(y, 5));
+        expect(x == 10_i);
+        expect(y == 5_i);
     };
 }

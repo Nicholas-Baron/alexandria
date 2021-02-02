@@ -22,7 +22,7 @@ int main() {
 
     "the length of 'hello' is 5"_test = [] {
         const string hello = "hello";
-        expect(eq(hello.size(), 5ul));
+        expect(hello.size() == 5_ul);
     };
 
     "a string can be equal to a char *"_test = [] {
