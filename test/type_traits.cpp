@@ -10,6 +10,18 @@ int main() {
     // is_same is false if two types are not exactly the same.
     static_assert(not alx::is_same_v<int, bool>);
 
+    // add_lval_ref adds an lvalue reference.
+    static_assert(alx::is_same_v<alx::add_lval_ref_t<int>, int &>);
+
+    // add_lval_ref of a lvalue ref is the same as the input.
+    static_assert(alx::is_same_v<alx::add_lval_ref_t<int &>, int &>);
+
+    // add_rval_ref adds an rvalue reference.
+    static_assert(alx::is_same_v<alx::add_rval_ref_t<int>, int &&>);
+
+    // add_rval_ref of a rvalue raf is the same as the input.
+    static_assert(alx::is_same_v<alx::add_rval_ref_t<int &&>, int &&>);
+
     // remove_ref removes lvalue references.
     static_assert(alx::is_same_v<alx::remove_ref_t<int &>, int>);
 

@@ -5,6 +5,8 @@
 
 namespace alx {
 
+    // trait to check if two traits are the same.
+
     template<typename T, typename U>
     struct is_same {
         static constexpr bool value{false};
@@ -16,6 +18,26 @@ namespace alx {
 
     template<typename T, typename U>
     constexpr bool is_same_v = is_same<T, U>::value;
+
+    // trait to add references onto a given type.
+
+    template<typename T>
+    struct add_lval_ref {
+        using type = T &;
+    };
+
+    template<typename T>
+    struct add_rval_ref {
+        using type = T &&;
+    };
+
+    template<typename T>
+    using add_lval_ref_t = typename add_lval_ref<T>::type;
+
+    template<typename T>
+    using add_rval_ref_t = typename add_rval_ref<T>::type;
+
+    // trait to remove references from a given type.
 
     template<typename T>
     struct remove_ref {
