@@ -31,6 +31,16 @@ namespace alx {
         using type = T &&;
     };
 
+    template<>
+    struct add_lval_ref<void> {
+        using type = void;
+    };
+
+    template<>
+    struct add_rval_ref<void> {
+        using type = void;
+    };
+
     template<typename T>
     using add_lval_ref_t = typename add_lval_ref<T>::type;
 

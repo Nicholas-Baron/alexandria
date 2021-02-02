@@ -22,6 +22,10 @@ int main() {
     // add_rval_ref of a rvalue raf is the same as the input.
     static_assert(alx::is_same_v<alx::add_rval_ref_t<int &&>, int &&>);
 
+    // void is special and does not take any references.
+    static_assert(alx::is_same_v<alx::add_lval_ref_t<void>, void>);
+    static_assert(alx::is_same_v<alx::add_rval_ref_t<void>, void>);
+
     // remove_ref removes lvalue references.
     static_assert(alx::is_same_v<alx::remove_ref_t<int &>, int>);
 
