@@ -4,7 +4,12 @@ project(alexandria)
 set(CXX_STANDARD 20)
 set(CXX_STANDARD_REQUIRED ON)
 set(CXX_EXTENSIONS OFF)
-set(CXX_FLAGS ${CMAKE_CXX_FLAGS} -Wall -Wextra -Wpedantic -g)
+
+set(WARNING_FLAGS "-Wall -Wextra -Wpedantic -Wmissing-declarations")
+
+# Setup global flags
+set(CMAKE_CXX_FLAGS "${CMAKE_CXX_FLAGS} ${WARNING_FLAGS} -fno-exceptions -fno-rtti -ffunction-sections")
+set(CMAKE_CXX_FLAGS_DEBUG "${CMAKE_CXX_FLAGS} -g -fsantize=undefined")
 
 # For clang-format support
 list(APPEND CMAKE_MODULE_PATH ${PROJECT_SOURCE_DIR}/cmake)
@@ -18,10 +23,6 @@ add_library(alexandria
 )
 
 target_include_directories(alexandria PUBLIC ${CMAKE_CURRENT_SOURCE_DIR}/include)
-target_compile_options(alexandria PRIVATE 
-    ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined -Wmissing-declarations
-    -ffunction-sections
-)
 set_target_properties(alexandria PROPERTIES
     CXX_STANDARD 20
     CXX_STANDARD_REQUIRED ON
@@ -30,14 +31,13 @@ target_compile_features(alexandria
     PRIVATE cxx_auto_type 
     PUBLIC cxx_noexcept cxx_final cxx_attributes cxx_nullptr cxx_defaulted_functions cxx_constexpr
     )
+# Alexandria should not need the C++ standard library.
+target_compile_options(alexandria PRIVATE -nostdlib)
 
 function(add_alexandria_test test_exec test_src)
     message(STATUS "Test ${test_exec} registered")
     add_executable(${test_exec} ${test_src})
     target_link_libraries(${test_exec} PRIVATE ubsan alexandria)
-    target_compile_options(${test_exec} PRIVATE
-        ${CXX_FLAGS} -nostdlib -fno-exceptions -fno-rtti -fsanitize=undefined
-        )
     target_compile_features(${test_exec} PRIVATE cxx_std_20)
     target_include_directories(${test_exec} PRIVATE ${CMAKE_CURRENT_SOURCE_DIR}/external)
 endfunction()
