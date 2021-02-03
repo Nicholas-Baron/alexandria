@@ -19,6 +19,7 @@ clangformat_setup(${to_be_formatted})
 
 add_library(alexandria 
     src/ascii_string.cpp
+    src/file_input.cpp
     src/global_mem.cpp
 )
 
