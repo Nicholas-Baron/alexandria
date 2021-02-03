@@ -2,6 +2,7 @@
 #define OPTIONAL_H
 
 #include "asserts.h"
+#include <new>
 #include "utility.h"
 
 namespace alx {
@@ -11,7 +12,7 @@ namespace alx {
         constexpr optional() noexcept = default;
 
         constexpr optional(T && value) {
-            new (buffer) T{move(value)};
+            ::new (buffer) T{move(value)};
             alive = true;
         }
 
@@ -75,7 +76,7 @@ namespace alx {
             return reinterpret_cast<const T *>(buffer);
         }
 
-        alignas(T) char buffer[sizeof(T)];
+        alignas(T) unsigned char buffer[sizeof(T)];
         bool alive{false};
     };
 
